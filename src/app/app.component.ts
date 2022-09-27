@@ -17,4 +17,7 @@ export class AppComponent {
     console.log("Editando Nota");
     console.log($event);
   }
+  public alerta(){
+    alert("Alerta Roja");
+  }
 }

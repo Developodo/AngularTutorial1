@@ -3,4 +3,5 @@
 (editNote)="this.editingNote($event)" (removeNote)="this.removingNote($event)" ></app-note>
 <app-note [note]="{id:2,title:'hola',description:'mundo'}"
 (editNote)="this.editingNote($event)" (removeNote)="this.removingNote($event)" ></app-note>
+<app-button [clase]="'btn btn-danger'" [texto]="'Alerta'" (action)="alerta()"></app-button>
 <router-outlet></router-outlet>

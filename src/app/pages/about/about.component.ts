@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-error404',
+  selector: 'app-about',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './error404.component.html',
-  styleUrls: ['./error404.component.css']
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.css']
 })
-export class Error404Component implements OnInit {
+export class AboutComponent implements OnInit {
 
   constructor() { }
 

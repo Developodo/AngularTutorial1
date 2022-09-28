@@ -2,18 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-subb',
+  selector: 'app-login',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <p>
-      subb works!
-    </p>
-  `,
-  styles: [
-  ]
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class SubbComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   constructor() { }
 

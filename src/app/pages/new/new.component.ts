@@ -2,18 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-suba',
+  selector: 'app-new',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <p>
-      suba works!
-    </p>
-  `,
-  styles: [
-  ]
+  templateUrl: './new.component.html',
+  styleUrls: ['./new.component.css']
 })
-export class SubaComponent implements OnInit {
+export class NewComponent implements OnInit {
 
   constructor() { }
 

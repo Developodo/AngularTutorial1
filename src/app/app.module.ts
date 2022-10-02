@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NoteComponent } from './components/note/note.component';
 import { ButtonComponent } from './components/button/button.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { HighlightDirective } from './directives/highlight.directive';
+import { NotesService } from './services/notes.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ButtonComponent,
     NavbarComponent
   ],
-  providers: [],
+  providers: [NotesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

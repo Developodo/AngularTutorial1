@@ -1,22 +1,2 @@
-<nav aria-label="breadcrumb" >
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item active" 
-      aria-current="page" [style.background-color]="color"
-      (click)="this.refresh()"> {{page}} </li>
-      <li>
-        <input (change)="cambiaCorlor($event)" #colorpicker type="color" class="form-control form-control-color" [(ngModel)]="color" title="Elige tu color">
-      </li>
-      <li>
-        <input type="text" [(ngModel)]="color">
-      </li>
-      <li *ngIf="color!='#000000'">
-        Estilo agradable
-      </li>
-    </ol>
-</nav>
-
-
-<app-note *ngFor="let note of notes;let i=index;trackBy:trackByNotes" [note]="note"
-(editNote)="this.editingNote(note)" (removeNote)="this.removingNote(note)" ></app-note>
-
-
+<app-note *ngFor="let note of this.notesS.getNotes();let i=index;trackBy:trackByNotes" [note]="note"
+(editNote)="this.editingNote(note)" (removeNote)="this.removingNote(note)" appHighlight></app-note>

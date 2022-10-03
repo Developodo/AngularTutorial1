@@ -12,6 +12,11 @@ export class NotesService {
   constructor() { }
 
   public createNote(newNote:INote){
+    /**
+     * Base de datos -> clave primar id
+     */
+    let id=Math.floor(Math.random()*1000)+1;
+    newNote.id=id;
     this.notes.push(newNote);
   }
   public removeNote(id:any){

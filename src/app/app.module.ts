@@ -7,7 +7,7 @@ import { NoteComponent } from './components/note/note.component';
 import { ButtonComponent } from './components/button/button.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotesService } from './services/notes.service';
-import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 import { LoginService } from './services/login.service';
 
 @NgModule({
@@ -18,7 +18,8 @@ import { LoginService } from './services/login.service';
     BrowserModule,
     AppRoutingModule,
     ButtonComponent,
-    NavbarComponent
+    NavbarComponent,
+    SocialLoginModule
   ],
   providers: [NotesService,
     {

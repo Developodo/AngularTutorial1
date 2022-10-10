@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { NoteComponent } from './components/note/note.component';
 import { ButtonComponent } from './components/button/button.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HighlightDirective } from './directives/highlight.directive';
 import { NotesService } from './services/notes.service';
+import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,25 @@ import { NotesService } from './services/notes.service';
     ButtonComponent,
     NavbarComponent
   ],
-  providers: [NotesService],
+  providers: [NotesService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '870225859421-tacughl35u9p8rgne25culc88ujnadek.apps.googleusercontent.com'
+            )
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    },LoginService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -26,15 +26,12 @@ export class FormNoteComponent implements OnInit {
     })
    }
   ngOnChanges($changes:any){
-    console.log($changes)
     if($changes.note && $changes.note.currentValue){
       this.form.setValue($changes.note.currentValue);
     }
   }
   ngOnInit(): void {
     if(this.note && this.note.title){
-      console.log("RECIBO")
-      console.log(this.note)
       this.form.setValue(this.note);
 
       /*this.form.patchValue({
@@ -51,7 +48,7 @@ export class FormNoteComponent implements OnInit {
       description: this.form.value.description
     }
     this.onsubmit.emit(newNote);
-    this.form.reset();
+    //this.form.reset();
   }
 
 }

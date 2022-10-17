@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { INote } from '../model/INote';
-import { AngularFirestore, AngularFirestoreCollection,DocumentReference } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/compat/firestore';
 import { Title } from '@angular/platform-browser';
 
 @Injectable({
@@ -49,22 +49,45 @@ export class NotesService {
     return this.notesRef.doc(key).set(newNote, {merge: true}); //merge -> create if not exists, update if exists
   }
 
-  public removeNote(id:any){
+  public removeNote(id:any):Promise<void>{
     let newNotes = this.notes.filter((n)=>{
       return n.id!=id;
     });
     this.notes = newNotes;
+    return this.notesRef.doc(id).delete();  
   }
   public getNotes():INote[]{
     return this.notes;
   }
-  public updateNote(note:INote){
-    let n=this.notes.map(n=>{
+  public updateNote(note:INote):Promise<void>{
+    let idtobeupdated:any;
+    let data:any;
+    this.notes.forEach(n=>{
       if(n.id==note.id){
         n.title=note.title;
         n.description=note.description;
+        let {id,...newData} = note;
+        idtobeupdated=id;
+        data=newData;
       }
-      return n;
-    })
+    });
+    if(idtobeupdated){
+      return this.notesRef.doc(idtobeupdated as string).update(data);
+    }else{
+      return Promise.resolve();
+    }
+  }
+
+  public customQuery(){
+    const q = this.notesRef.ref.where("title","==","Hello").get()
+    .then((querySnapshot)=>{
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+    });
+    }).catch((error) => {
+      console.log("Error getting documents: ", error);
+  });
+
   }
 }

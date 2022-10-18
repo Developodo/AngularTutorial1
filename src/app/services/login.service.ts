@@ -14,6 +14,7 @@ export class LoginService {
 
   constructor(private authService: SocialAuthService,
     private router:Router) {
+
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
